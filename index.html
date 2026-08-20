@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>A very serious question 💌</title>
+<meta name="theme-color" content="#FAF8F5" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%92%8C%3C/text%3E%3C/svg%3E">
+<style>
+/* ==========================================================================
+   PLAYFUL PROPOSAL — chitthi.io Template 03
+   Warm editorial paper + real kitten memes · single file
+   ========================================================================== */
+:root{
+  --paper:#FAF8F5; --card:#FFFFFF; --ink:#23272F; --soft:#5A6070;
+  --rose:#C87A7D; --rose-deep:#A85F62; --rose-tint:#F6E9E8;
+  --sage:#3B7A57; --amber:#F59E0B; --line:rgba(35,39,47,.09);
+  --sh:0 10px 30px rgba(0,0,0,.05); --sh-lift:0 20px 46px rgba(0,0,0,.09);
+  --f-display:"Playfair Display",Georgia,serif;
+  --f-body:"Plus Jakarta Sans",system-ui,sans-serif;
+  --f-hand:"Caveat",cursive;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --yes-scale:1;
+}
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ overflow-x:hidden; max-width:100%; }
+body{
+  min-height:100dvh; background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); line-height:1.7;
+  -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
+  overscroll-behavior-y:none;
+}
+body.locked{ overflow:hidden; height:100dvh; }
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(35,39,47,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(35,39,47,.022) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+body::after{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(58% 42% at 12% 8%,rgba(200,122,125,.10),transparent 70%),
+    radial-gradient(52% 38% at 88% 92%,rgba(245,158,11,.09),transparent 70%);
+}
+h1,h2,h3{ font-family:var(--f-display); font-weight:500; line-height:1.18; letter-spacing:-.012em; }
+button{ font-family:inherit; cursor:pointer; border:0; background:none; color:inherit; }
+img{ display:block; max-width:100%; }
+:focus-visible{ outline:2px solid var(--rose); outline-offset:4px; border-radius:10px; }
+
+.eyebrow{
+  display:block; text-align:center; margin-bottom:16px;
+  font-size:.67rem; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:var(--rose);
+}
+
+/* ============================ STAGE 1 ============================ */
+#gate{
+  position:fixed; inset:0; z-index:5;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:26px 20px calc(30px + env(safe-area-inset-bottom));
+  text-align:center;
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+#gate.gone{ opacity:0; pointer-events:none; transform:scale(.97); }
+
+.q{
+  font-size:clamp(1.55rem,5.6vw,2.5rem); font-style:italic;
+  max-width:16ch; margin:0 auto;
+}
+
+/* meme sticker */
+.sticker{
+  position:relative; width:min(220px,58vw); aspect-ratio:1/1;
+  margin:26px auto 18px; border-radius:50%;
+  background:var(--card); border:1px solid var(--line);
+  box-shadow:var(--sh); overflow:hidden;
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.sticker::after{                       /* soft inner ring */
+  content:""; position:absolute; inset:0; border-radius:50%;
+  box-shadow:inset 0 0 0 6px rgba(255,255,255,.75); pointer-events:none;
+}
+.sticker img{ width:100%; height:100%; object-fit:cover; }
+.sticker.pop{ animation:pop .55s var(--ease); }
+@keyframes pop{
+  0%  { transform:scale(1)    rotate(0deg);   opacity:1; }
+  35% { transform:scale(.86)  rotate(-4deg);  opacity:.25; }
+  70% { transform:scale(1.08) rotate(3deg);   opacity:1; }
+  100%{ transform:scale(1)    rotate(0deg);   opacity:1; }
+}
+
+.caption{
+  font-family:var(--f-hand); font-size:clamp(1.25rem,4.6vw,1.6rem);
+  color:var(--rose-deep); min-height:2.2em; max-width:22ch; margin:0 auto 6px;
+  transition:opacity .3s var(--ease);
+}
+.caption.swap{ opacity:0; }
+.counter{ font-size:.74rem; color:var(--soft); opacity:.75; min-height:1.3em; }
+
+/* buttons */
+.answers{
+  display:flex; gap:14px; align-items:center; justify-content:center;
+  margin-top:26px; flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:15px 32px; border-radius:999px;
+  font-size:1rem; font-weight:700; letter-spacing:-.01em; white-space:nowrap;
+  box-shadow:var(--sh);
+  transition:transform .38s var(--ease), box-shadow .38s var(--ease), background .25s;
+}
+#yesBtn{
+  background:var(--sage); color:#fff;
+  transform:scale(var(--yes-scale));
+  transform-origin:center;
+  box-shadow:0 12px 30px -10px rgba(59,122,87,.6);
+}
+#yesBtn:hover{ background:#33684A; }
+#yesBtn:active{ transform:scale(calc(var(--yes-scale) * .96)); }
+
+#noBtn{
+  background:var(--card); color:var(--ink); border:1px solid var(--line);
+  transition:left .42s var(--ease), top .42s var(--ease),
+             transform .3s var(--ease), box-shadow .3s var(--ease);
+  z-index:6;
+}
+#noBtn.loose{ position:fixed; margin:0; }
+#noBtn:hover{ border-color:rgba(200,122,125,.5); }
+
+/* ============================ STAGE 2 ============================ */
+#vault{
+  position:relative; z-index:1; opacity:0; pointer-events:none;
+  transition:opacity .9s var(--ease);
+  padding:56px 20px calc(40px + env(safe-area-inset-bottom));
+}
+#vault.in{ opacity:1; pointer-events:auto; }
+.wrap{ width:100%; max-width:660px; margin-inline:auto; }
+.sec{ margin-bottom:clamp(46px,10vw,72px); }
+.sec h2{ text-align:center; font-size:clamp(1.4rem,4.4vw,2rem); font-style:italic; }
+.lede{ text-align:center; color:var(--soft); font-size:.95rem; margin-top:12px; }
+
+.victory{ text-align:center; }
+.victory .sticker{ margin-top:8px; }
+.victory h1{ font-size:clamp(1.8rem,6vw,2.7rem); font-style:italic; }
+.victory p{ color:var(--soft); margin-top:12px; font-size:1rem; }
+
+/* polaroids */
+.deck{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:30px; }
+.pol{ display:block; width:100%; perspective:1200px; background:none; padding:0; border:0;
+      aspect-ratio:3/3.9; transition:rotate .45s var(--ease); }
+.pol:nth-child(1){ rotate:-1.8deg; } .pol:nth-child(2){ rotate:1.4deg; }
+.pol:nth-child(3){ rotate:1.2deg; }  .pol:nth-child(4){ rotate:-1.5deg; }
+.pol:hover{ rotate:0deg; }
+.pol-in{ display:block; position:relative; width:100%; height:100%;
+         transform-style:preserve-3d; transition:transform .85s var(--ease); }
+.pol.flipped .pol-in{ transform:rotateY(180deg); }
+.face{
+  position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  background:var(--card); border:1px solid var(--line); border-radius:18px;
+  box-shadow:var(--sh); padding:11px 11px 0; display:flex; flex-direction:column; overflow:hidden;
+}
+.face.front img{ display:block; width:100%; flex:1 1 auto; min-height:0;
+                 object-fit:cover; border-radius:11px; background:var(--rose-tint); }
+.cap{ display:block; flex:none; font-family:var(--f-hand); font-size:1.05rem;
+      text-align:center; padding:8px 4px 11px; color:var(--soft); }
+.face.back{ transform:rotateY(180deg); background:linear-gradient(160deg,#FFFDF9,#FDF4EE);
+            align-items:center; justify-content:center; text-align:center; padding:22px 16px; }
+.face.back .note{ display:block; font-family:var(--f-hand); font-size:1.28rem; line-height:1.4; }
+.tape{ position:absolute; top:-9px; left:50%; z-index:3; width:76px; height:21px;
+       transform:translateX(-50%) rotate(-2.4deg); background:rgba(245,158,11,.20);
+       border-left:1px dashed rgba(245,158,11,.4); border-right:1px dashed rgba(245,158,11,.4); }
+.turn{ position:absolute; top:18px; right:18px; z-index:2; display:grid; place-items:center;
+       width:25px; height:25px; border-radius:50%; background:rgba(255,255,255,.82);
+       backdrop-filter:blur(6px); font-size:.7rem; color:var(--rose);
+       box-shadow:0 2px 8px rgba(0,0,0,.10); transition:transform .4s var(--ease),opacity .3s; }
+.pol:hover .turn{ transform:rotate(140deg); }
+.pol.flipped .turn{ opacity:0; }
+
+/* letter */
+.letter{
+  background:linear-gradient(165deg,#FFFDF8 0%,#FCF6EF 100%);
+  border:1px solid var(--line); border-radius:26px; box-shadow:var(--sh);
+  padding:34px 28px 30px; position:relative; margin-top:28px;
+}
+.letter::before{ content:""; position:absolute; left:0; top:26px; bottom:26px; width:2px;
+                 background:linear-gradient(var(--rose),transparent); opacity:.35; }
+.letter p{ font-family:var(--f-hand); font-size:1.38rem; line-height:1.66;
+           white-space:pre-line; color:#2E323B; }
+.seal{ width:50px; height:50px; margin:24px auto 0; display:grid; place-items:center;
+       border-radius:50%; background:var(--rose-tint);
+       border:1px solid rgba(200,122,125,.35); font-size:1.2rem; }
+
+/* footer */
+.foot{ text-align:center; padding-top:8px; }
+.rule{ position:relative; height:1px; margin:0 auto 20px; max-width:280px;
+       background:linear-gradient(90deg,transparent,rgba(35,39,47,.16),transparent); }
+.rule span{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+            background:var(--paper); padding:0 .6rem; color:var(--rose); font-size:.8rem; }
+.foot .cta{
+  display:inline-flex; align-items:center; gap:.55rem; margin-top:14px;
+  padding:.7rem 1.3rem; border-radius:999px; background:var(--card);
+  border:1px solid var(--line); box-shadow:var(--sh);
+  font-size:.82rem; font-weight:700; color:var(--ink); text-decoration:none;
+  transition:transform .34s var(--ease),box-shadow .34s,border-color .3s;
+}
+.foot .cta:hover{ transform:translateY(-3px); box-shadow:var(--sh-lift); border-color:rgba(200,122,125,.45); }
+.foot small{ display:block; color:var(--soft); font-size:.8rem; }
+
+/* music pill */
+.music{
+  position:fixed; top:14px; right:14px; z-index:60; display:none;
+  align-items:center; gap:10px; padding:8px 14px 8px 12px; border-radius:999px;
+  background:rgba(255,255,255,.72); backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  border:1px solid var(--line); box-shadow:var(--sh); max-width:min(70vw,240px);
+}
+.music.on{ display:flex; }
+.wave{ display:flex; align-items:center; gap:2.5px; height:16px; flex:none; }
+.wave i{ width:2.5px; border-radius:2px; background:var(--rose); height:5px;
+         animation:eq .95s ease-in-out infinite; }
+.wave i:nth-child(2){ animation-delay:.14s; } .wave i:nth-child(3){ animation-delay:.28s; }
+.wave i:nth-child(4){ animation-delay:.42s; }
+.music.paused .wave i{ animation-play-state:paused; height:4px; opacity:.45; }
+@keyframes eq{ 0%,100%{height:4px;} 50%{height:15px;} }
+.m-meta{ min-width:0; line-height:1.2; }
+.m-meta b{ display:block; font-size:.73rem; font-weight:700; white-space:nowrap;
+           overflow:hidden; text-overflow:ellipsis; }
+.m-meta span{ display:block; font-size:.63rem; color:var(--soft); white-space:nowrap;
+              overflow:hidden; text-overflow:ellipsis; }
+.m-btn{ flex:none; width:29px; height:29px; border-radius:50%; background:var(--rose-tint);
+        color:var(--rose-deep); display:grid; place-items:center; font-size:.7rem;
+        transition:transform .22s var(--ease),background .2s; }
+.m-btn:hover{ background:var(--rose); color:#fff; }
+
+#fx{ position:fixed; inset:0; z-index:70; pointer-events:none; }
+
+@media (min-width:640px){
+  .deck{ grid-template-columns:repeat(4,1fr); gap:14px; }
+  .pol{ aspect-ratio:3/4.1; }
+  .wrap{ max-width:720px; }
+}
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== MUSIC ===================== -->
+<div class="music" id="music">
+  <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="m-meta"><b id="mTitle">—</b><span id="mArtist">—</span></div>
+  <button class="m-btn" id="mToggle" aria-label="Play or pause music">❚❚</button>
+</div>
+<audio id="audio" loop preload="auto"></audio>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- ===================== STAGE 1 ===================== -->
+<section id="gate">
+  <span class="eyebrow">A very serious question 💌</span>
+  <h1 class="q" id="question">Will you be mine, forever &amp; always?</h1>
+
+  <div class="sticker" id="sticker">
+    <img id="memeImg" src="memes/00-stare.gif" alt="A hopeful kitten staring at you" width="260" height="260">
+  </div>
+
+  <p class="caption" id="caption">Please say yes? Look at this face 🥺</p>
+  <p class="counter" id="counter"></p>
+
+  <div class="answers">
+    <button class="btn" id="yesBtn">Yes ❤️</button>
+    <button class="btn" id="noBtn">No 🙈</button>
+  </div>
+</section>
+
+<!-- ===================== STAGE 2 ===================== -->
+<main id="vault">
+  <div class="wrap">
+
+    <section class="sec victory">
+      <span class="eyebrow">She said yes</span>
+      <div class="sticker"><img id="yesImg" src="memes/02-dance.gif" alt="A kitten dancing with joy" width="260" height="260"></div>
+      <h1 id="vHead">I Knew You Couldn't Resist! 🥹❤️</h1>
+      <p id="vSub">I knew you couldn't say no to us 🥂</p>
+    </section>
+
+    <section class="sec">
+      <span class="eyebrow">Memory Vault</span>
+      <h2>Moments I keep replaying.</h2>
+      <p class="lede">Tap any polaroid to turn it over — there's something written on the back.</p>
+      <div class="deck" id="deck"></div>
+    </section>
+
+    <section class="sec">
+      <span class="eyebrow" id="letterEyebrow">A letter for you</span>
+      <h2>Words I'd rather you keep.</h2>
+      <div class="letter"><p id="letterText"></p><div class="seal">💌</div></div>
+    </section>
+
+    <footer class="foot">
+      <div class="rule"><span>♥</span></div>
+      <small>Coded with love · <b>Chitthi.io</b></small>
+      <a class="cta" href="https://chitthi-io.netlify.app" target="_blank" rel="noopener">
+        🎁 Create one for your person <span aria-hidden="true">➔</span>
+      </a>
+    </footer>
+
+  </div>
+</main>
+
+<script>
+/* ==========================================================================
+   CLIENT_CONFIG — everything personal lives here
+   ========================================================================== */
+const CLIENT_CONFIG = {
+  recipientName: "Anya",
+  senderName:    "Prateek",
+  proposalQuestion: "Will you be my Valentine &amp; forever person? 💌",
+
+  song: {
+    /* Chopin's Grande Valse Brillante — bright, celebratory, unmistakably a
+       "yes" moment. Musopen recording, CC0 public domain, shipped as song.mp3
+       (96kbps, fades in/out for a seamless loop).
+       Swap in the client's own track by replacing song.mp3 — no code change. */
+    title:  "Grande Valse Brillante",
+    artist: "Frédéric Chopin",
+    audioUrl: "song.mp3",
+    fallbackUrl: "https://ia800404.us.archive.org/26/items/musopen-chopin/Grande%20Valse%20Brilliante%20Op.18%20In%20E%20flat%20major.mp3",
+    volume: 0.5
+  },
+
+  /* Real kitten memes, self-hosted so no CDN can 404 them */
+  memeStages: [
+    { img:"memes/00-stare.gif",   text:"Please say yes? Look at this face 🥺",              noBtnText:"No 🙈" },
+    { img:"memes/01-kitty.gif",   text:"Wait… are you actually clicking NO? 🥺",             noBtnText:"Are you sure? 🥺" },
+    { img:"memes/02-sad.gif",     text:"How could you say no to this face?! 😭",             noBtnText:"Think again! 💔" },
+    { img:"memes/03-annoyed.gif", text:"Now you're just being mean 😾",                      noBtnText:"Last chance… 😾" },
+    { img:"memes/05-paws.gif",    text:"I'll let you have the last slice of pizza! 🍕",       noBtnText:"Nice try 😉" },
+    { img:"memes/03-cute.gif",    text:"Clicking NO is officially banned by law ⚖️",          noBtnText:"Not happening 🙃" }
+  ],
+
+  yesMeme: {
+    img:        "memes/02-dance.gif",
+    heading:    "I Knew You Couldn't Resist! 🥹❤️",
+    subheading: "I knew you couldn't say no to us 🥂"
+  },
+
+  letterContent: `Dear Anya,
+
+I knew from our very first conversation that you were someone truly special. Thank you for always making me laugh, for tolerating my terrible jokes, and for making life feel like an adventure.
+
+Here's to us, our endless dates, and a million more memories together.
+
+With all my heart,
+Prateek`,
+
+  polaroids: [
+    { frontImg:"photos/01.jpg", caption:"the beginning",  backNote:"The moment I knew I had feelings for you ❤️" },
+    { frontImg:"photos/02.jpg", caption:"midnight run",   backNote:"Our chaotic midnight ice cream run 🍦" },
+    { frontImg:"photos/03.jpg", caption:"just you",       backNote:"You looking beautiful as always ✨" },
+    { frontImg:"photos/04.jpg", caption:"best decision",  backNote:"Best decision you ever made: clicking YES 🥂" }
+  ]
+};
+
+/* ========================= helpers ========================= */
+const $ = (s)=>document.querySelector(s);
+const $$ = (s)=>Array.from(document.querySelectorAll(s));
+const C = CLIENT_CONFIG;
+const buzz = (p)=>{ if(navigator.vibrate){ try{ navigator.vibrate(p); }catch(e){} } };
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ========================= hydrate ========================= */
+document.title = `A very serious question — for ${C.recipientName} 💌`;
+$("#question").innerHTML = C.proposalQuestion;
+$("#caption").textContent = C.memeStages[0].text;
+$("#noBtn").textContent   = C.memeStages[0].noBtnText;
+$("#memeImg").src         = C.memeStages[0].img;
+$("#yesImg").src          = C.yesMeme.img;
+$("#vHead").textContent   = C.yesMeme.heading;
+$("#vSub").textContent    = C.yesMeme.subheading;
+$("#letterText").textContent = C.letterContent;
+$("#letterEyebrow").textContent = `A letter for ${C.recipientName}`;
+$("#mTitle").textContent  = C.song.title;
+$("#mArtist").textContent = C.song.artist;
+
+/* preload every meme so swaps are instant */
+C.memeStages.forEach(s => { const i = new Image(); i.src = s.img; });
+(function(){ const i = new Image(); i.src = C.yesMeme.img; })();
+
+/* ==========================================================================
+   ESCALATING NO-DODGE ENGINE
+   ========================================================================== */
+let stage = 0, noCount = 0, loose = false;
+const noBtn = $("#noBtn"), yesBtn = $("#yesBtn"), sticker = $("#sticker");
+const PAD = 20;
+
+function placeNoRandomly(){
+  const r = noBtn.getBoundingClientRect();
+  const w = r.width, h = r.height;
+  const maxX = Math.max(PAD, innerWidth  - w - PAD);
+  const maxY = Math.max(PAD, innerHeight - h - PAD);
+
+  /* keep clear of the YES button so the two never overlap */
+  const y = yesBtn.getBoundingClientRect();
+  let x1, y1, tries = 0;
+  do{
+    x1 = PAD + Math.random() * (maxX - PAD);
+    y1 = PAD + Math.random() * (maxY - PAD);
+    tries++;
+  } while(tries < 24 &&
+          x1 < y.right + 12 && x1 + w > y.left - 12 &&
+          y1 < y.bottom + 12 && y1 + h > y.top - 12);
+
+  noBtn.style.left = x1 + "px";
+  noBtn.style.top  = y1 + "px";
+}
+
+function escalate(){
+  noCount++;
+  stage = Math.min(noCount, C.memeStages.length - 1);
+  const s = C.memeStages[stage];
+
+  /* meme swap with a pop */
+  const cap = $("#caption");
+  cap.classList.add("swap");
+  sticker.classList.remove("pop"); void sticker.offsetWidth; sticker.classList.add("pop");
+  setTimeout(()=>{
+    $("#memeImg").src = s.img;
+    $("#memeImg").alt = s.text;
+    cap.textContent = s.text;
+    cap.classList.remove("swap");
+  }, 180);
+
+  noBtn.textContent = s.noBtnText;
+
+  /* YES grows 18% per attempt, capped so it can't overflow the viewport */
+  const scale = Math.min(1 * Math.pow(1.18, noCount), 2.4);
+  document.documentElement.style.setProperty("--yes-scale", scale.toFixed(3));
+
+  $("#counter").textContent = noCount === 1
+    ? "…that button is not going to cooperate 🙃"
+    : `NO attempts: ${noCount} · still not working 🙃`;
+
+  buzz(18);
+}
+
+function dodge(e){
+  if(e){ e.preventDefault(); e.stopPropagation(); }
+  if(!loose){
+    /* freeze current position, then switch to fixed so the jump is seamless */
+    const r = noBtn.getBoundingClientRect();
+    noBtn.style.left = r.left + "px";
+    noBtn.style.top  = r.top  + "px";
+    noBtn.style.width = r.width + "px";
+    noBtn.classList.add("loose");
+    loose = true;
+    void noBtn.offsetWidth;
+  }
+  placeNoRandomly();
+  escalate();
+}
+
+/* pointer covers mouse + touch + pen once; touchstart adds instant response */
+noBtn.addEventListener("click", dodge);
+noBtn.addEventListener("touchstart", dodge, { passive:false });
+/* desktop: run away on hover too, once it is loose */
+noBtn.addEventListener("mouseenter", ()=>{ if(loose) placeNoRandomly(); });
+
+addEventListener("resize", ()=>{ if(loose) placeNoRandomly(); });
+
+/* ==========================================================================
+   AUDIO — started synchronously inside the YES gesture
+   ========================================================================== */
+const audio = $("#audio");
+let usingFallback = false;
+audio.addEventListener("error", ()=>{
+  if(!usingFallback && C.song.fallbackUrl){
+    usingFallback = true;
+    audio.src = C.song.fallbackUrl;
+    audio.play().catch(()=>{});
+    $("#mArtist").textContent = C.song.artist + " · streaming";
+  }
+});
+function fadeTo(target, ms){
+  const from = audio.volume, t0 = performance.now();
+  (function step(now){
+    const k = Math.min(1,(now-t0)/ms);
+    audio.volume = Math.max(0, Math.min(1, from + (target-from)*k));
+    if(k<1) requestAnimationFrame(step);
+  })(t0);
+}
+$("#mToggle").addEventListener("click", ()=>{
+  if(audio.paused){ audio.play().catch(()=>{}); $("#music").classList.remove("paused"); $("#mToggle").textContent="❚❚"; }
+  else { audio.pause(); $("#music").classList.add("paused"); $("#mToggle").textContent="▶"; }
+});
+
+/* ==========================================================================
+   YES — celebration
+   ========================================================================== */
+let answered = false;
+yesBtn.addEventListener("click", ()=>{
+  if(answered) return; answered = true;
+
+  /* audio first, still inside the gesture */
+  audio.src = C.song.audioUrl || C.song.fallbackUrl;
+  audio.volume = 0;
+  audio.play().then(()=>{
+    fadeTo(C.song.volume ?? .5, 1400);
+    $("#music").classList.add("on"); $("#music").classList.remove("paused");
+    $("#mToggle").textContent = "❚❚";
+  }).catch(()=>{
+    $("#music").classList.add("on","paused"); $("#mToggle").textContent = "▶";
+  });
+
+  buzz([40,60,40,60,90]);
+  $("#memeImg").src = C.yesMeme.img;
+  $("#memeImg").alt = "A kitten dancing with joy";
+  sticker.classList.remove("pop"); void sticker.offsetWidth; sticker.classList.add("pop");
+  $("#caption").textContent = C.yesMeme.subheading;
+  noBtn.style.display = "none";
+
+  burst(3500);
+
+  setTimeout(()=>{
+    $("#gate").classList.add("gone");
+    document.body.classList.remove("locked");
+    $("#vault").classList.add("in");
+    scrollTo({ top:0 });
+  }, 900);
+  setTimeout(()=>{ $("#gate").style.display = "none"; }, 1700);
+});
+
+/* ==========================================================================
+   CONFETTI + HEART SHOWER
+   ========================================================================== */
+const cv = $("#fx"), ctx = cv.getContext("2d");
+let bits = [], raf = null, stopAt = 0;
+function size(){ cv.width = innerWidth; cv.height = innerHeight; }
+size(); addEventListener("resize", size);
+const COLORS = ["#C87A7D","#F59E0B","#3B7A57","#F6E9E8","#23272F","#FFFFFF"];
+
+function heart(x,y,s,rot,color){
+  ctx.save(); ctx.translate(x,y); ctx.rotate(rot); ctx.scale(s/16,s/16);
+  ctx.fillStyle = color; ctx.beginPath();
+  ctx.moveTo(0,4);
+  ctx.bezierCurveTo(0,-2,-9,-2,-9,4);
+  ctx.bezierCurveTo(-9,10,0,13,0,18);
+  ctx.bezierCurveTo(0,13,9,10,9,4);
+  ctx.bezierCurveTo(9,-2,0,-2,0,4);
+  ctx.fill(); ctx.restore();
+}
+function burst(ms){
+  if(REDUCED) return;
+  stopAt = performance.now() + ms;
+  spawn(150);
+  if(!raf) raf = requestAnimationFrame(loop);
+}
+function spawn(n){
+  for(let i=0;i<n;i++){
+    bits.push({
+      x: Math.random()*cv.width, y: -30 - Math.random()*cv.height*0.5,
+      w: 6+Math.random()*8, h: 9+Math.random()*11,
+      c: COLORS[(Math.random()*COLORS.length)|0],
+      vy: 2+Math.random()*3.4, vx: -1.5+Math.random()*3,
+      rot: Math.random()*Math.PI, vr: -.12+Math.random()*.24,
+      heart: Math.random() < .38
+    });
+  }
+}
+function loop(now){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  if(now < stopAt && bits.length < 420 && Math.random() < .5) spawn(6);
+  bits.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr; p.vy+=0.015;
+    if(p.heart){ heart(p.x,p.y,p.w*1.7,p.rot,p.c); }
+    else{
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+      ctx.fillStyle=p.c; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+    }
+  });
+  bits = bits.filter(p=>p.y < cv.height+50);
+  if(bits.length){ raf = requestAnimationFrame(loop); }
+  else { ctx.clearRect(0,0,cv.width,cv.height); raf = null; }
+}
+
+/* ==========================================================================
+   POLAROIDS
+   ========================================================================== */
+$("#deck").innerHTML = C.polaroids.map((p,i)=>`
+  <button class="pol" aria-label="Turn over photo ${i+1}">
+    <span class="tape" aria-hidden="true"></span>
+    <span class="pol-in">
+      <span class="face front">
+        <img src="${p.frontImg}" alt="${(p.backNote||"").replace(/"/g,"")}" loading="lazy"
+             onerror="this.style.background='var(--rose-tint)';this.removeAttribute('src');">
+        <span class="cap">${p.caption||""}</span>
+        <span class="turn" aria-hidden="true">↻</span>
+      </span>
+      <span class="face back"><span class="note">${p.backNote}</span></span>
+    </span>
+  </button>`).join("");
+
+$("#deck").addEventListener("click", e=>{
+  const c = e.target.closest(".pol"); if(!c) return;
+  c.classList.toggle("flipped"); buzz(14);
+});
+
+/* lock scrolling until the question is answered */
+document.body.classList.add("locked");
+</script>
+</body>
+</html>
